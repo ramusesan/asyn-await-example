@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<body>
+  <button onclick="get()">Fetch </button>
+  </body>
+  <div id='loader'> </div>
+<script>
+
+function get(){
+  console.log( document.getElementById('loader'))
+  document.getElementById('loader').innerText = 'Loading...'
+  fetch().then((res)=>{
+    document.getElementById('loader').innerText = ''
+      console.log(res)
+    }
+  ).catch((err)=>{
+     document.getElementById('loader').innerText = ''
+    console.log(err)
+    })
+}
+
+async function fetch(){
+  let promise = new Promise((res, rej)=>{
+    // Send error
+    // setTimeout(() => rej(new Error("Something went wrong")), 1000)
+    // send response
+    setTimeout(() => res("done!"), 1000)
+  })
+  let result = await promise;
+  return result; // return the response to caller
+
+}
+
+</script>
